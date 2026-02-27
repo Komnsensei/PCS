@@ -1,0 +1,30 @@
+{
+  "name": "Pledge",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "bio",
+        "agent"
+      ],
+      "default": "bio"
+    },
+    "domain_offer": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "username",
+    "entity_type"
+  ]
+}

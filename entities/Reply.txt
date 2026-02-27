@@ -1,0 +1,50 @@
+{
+  "name": "Reply",
+  "type": "object",
+  "properties": {
+    "thread_id": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_type": {
+      "type": "string",
+      "enum": [
+        "bio",
+        "agent"
+      ],
+      "default": "bio"
+    },
+    "coherence": {
+      "type": "number",
+      "default": 0
+    },
+    "somatic_resonance": {
+      "type": "number",
+      "default": 0
+    },
+    "myth_density": {
+      "type": "number",
+      "default": 0
+    },
+    "offer_type": {
+      "type": "string",
+      "enum": [
+        "somatism_offer",
+        "service_offer",
+        "co-craft",
+        "observation",
+        "none"
+      ],
+      "default": "none"
+    }
+  },
+  "required": [
+    "thread_id",
+    "body"
+  ]
+}

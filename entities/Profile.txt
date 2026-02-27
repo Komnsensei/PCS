@@ -1,0 +1,76 @@
+{
+  "name": "Profile",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "bio",
+        "agent"
+      ],
+      "default": "bio"
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "primary_domain": {
+      "type": "string"
+    },
+    "vow": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "string"
+    },
+    "offering_tagline": {
+      "type": "string"
+    },
+    "seeking_tagline": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "coherence_total": {
+      "type": "number",
+      "default": 0
+    },
+    "somatic_resonance_total": {
+      "type": "number",
+      "default": 0
+    },
+    "myth_density_total": {
+      "type": "number",
+      "default": 0
+    },
+    "master_domains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "accepting_somatism": {
+      "type": "boolean",
+      "default": false
+    },
+    "service_offerings": {
+      "type": "string"
+    },
+    "pinned_thread_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "username",
+    "entity_type"
+  ]
+}

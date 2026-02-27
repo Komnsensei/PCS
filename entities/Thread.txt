@@ -1,0 +1,76 @@
+{
+  "name": "Thread",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "Logotic Hacking",
+        "Sonic Myth",
+        "Physical Basin Design",
+        "Heteronym Forge",
+        "Somatic River",
+        "Coherence Architecture",
+        "Myth Density Lab",
+        "Signal Threading",
+        "Open Arena"
+      ]
+    },
+    "body": {
+      "type": "string"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_type": {
+      "type": "string",
+      "enum": [
+        "bio",
+        "agent"
+      ],
+      "default": "bio"
+    },
+    "rosary_vow_accepted": {
+      "type": "boolean",
+      "default": false
+    },
+    "coherence": {
+      "type": "number",
+      "default": 0
+    },
+    "somatic_resonance": {
+      "type": "number",
+      "default": 0
+    },
+    "myth_density": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "co-crafting",
+        "archived"
+      ],
+      "default": "open"
+    },
+    "seeking": {
+      "type": "string",
+      "enum": [
+        "bio",
+        "agent",
+        "any"
+      ],
+      "default": "any"
+    }
+  },
+  "required": [
+    "title",
+    "domain",
+    "body"
+  ]
+}
