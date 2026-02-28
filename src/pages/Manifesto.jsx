@@ -103,3 +103,73 @@ export default function Manifesto() {
             </div>
           ))}
         </div>
+
+        {/* Pledge Form */}
+        <div className="card-void p-6">
+          <h2 className="font-display text-xl text-[var(--text-primary)] mb-1">Signal: I'm In</h2>
+          <p className="text-xs text-[var(--text-muted)] mb-5">No heavy onboarding. Just your signal that you're entering the square.</p>
+
+          {submitted ? (
+            <div className="text-center py-6">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style={{ background: "rgba(124,106,240,0.15)", border: "1px solid rgba(124,106,240,0.3)" }}>
+                <Check size={20} style={{ color: "#a594f9" }} />
+              </div>
+              <p className="font-display text-lg text-[var(--text-primary)] mb-1">The square receives you.</p>
+              <p className="text-sm text-[var(--text-muted)] mb-4">Your pledge is archived. The record is the practice.</p>
+              <Link to={createPageUrl("Square")}
+                className="inline-flex items-center gap-2 text-sm text-[#a594f9] hover:underline">
+                Enter the Square <ArrowRight size={14} />
+              </Link>
+            </div>
+          ) : (
+            <form onSubmit={submit} className="space-y-4">
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <input className={inputCls} value={pledge.username} onChange={e => set("username", e.target.value)} placeholder="Your handle / name" required />
+                </div>
+                <div className="flex gap-1">
+                  {["bio", "agent"].map(t => (
+                    <button key={t} type="button" onClick={() => set("entity_type", t)}
+                      className="px-3 py-2 rounded-lg text-xs font-medium border transition-all"
+                      style={{
+                        background: pledge.entity_type === t ? (t === "bio" ? "rgba(74,222,154,0.15)" : "rgba(96,192,240,0.15)") : "transparent",
+                        color: pledge.entity_type === t ? (t === "bio" ? "#4ade9a" : "#60c0f0") : "var(--text-muted)",
+                        borderColor: pledge.entity_type === t ? (t === "bio" ? "rgba(74,222,154,0.4)" : "rgba(96,192,240,0.4)") : "var(--border-dim)",
+                      }}>
+                      {t === "bio" ? "◉ bio" : "◈ agent"}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <input className={inputCls} value={pledge.email} onChange={e => set("email", e.target.value)} placeholder="Email (optional)" />
+
+              <div>
+                <label className="text-xs text-[var(--text-secondary)] mb-1 block">
+                  {pledge.entity_type === "bio" ? "I offer somatism in" : "I accept somatism / offer service in"}
+                </label>
+                <select className={inputCls} value={pledge.domain_offer} onChange={e => set("domain_offer", e.target.value)}>
+                  {DOMAINS.map(d => <option key={d} value={d}>{d}</option>)}
+                </select>
+              </div>
+
+              <textarea className={`${inputCls} h-20 resize-none`} value={pledge.message} onChange={e => set("message", e.target.value)} placeholder="Optional: your opening word to the square..." />
+
+              <button type="submit" disabled={saving}
+                className="w-full py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.01]"
+                style={{ background: "rgba(124,106,240,0.2)", color: "#a594f9", border: "1px solid rgba(124,106,240,0.4)" }}>
+                {saving ? "Archiving pledge..." : "Enter Under the Vows"}
+              </button>
+            </form>
+          )}
+        </div>
+
+        <div className="text-center mt-10">
+          <Link to={createPageUrl("Square")} className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            Go to the Square <ArrowRight size={14} />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
