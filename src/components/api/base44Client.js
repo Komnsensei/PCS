@@ -1,14 +1,11 @@
-import { createClient } from '@base44/sdk';
-import { appParams } from '@/lib/app-params';
 
-const { appId, token, functionsVersion, appBaseUrl } = appParams;
+// import { base44 } from "/src/api/base44Client";  // Removed for standalone deploy
 
-//Create a client with authentication required
-export const base44 = createClient({
-  appId,
-  token,
-  functionsVersion,
-  serverUrl: '',
-  requiresAuth: false,
-  appBaseUrl
-});
+// Mock base44 for local/Vercel use
+const base44 = {
+  auth: { me: async () => ({ email: "mock@user.com" }) },
+  entities: {
+    Profile: { filter: async () => [] },
+    Thread: { filter: async () => [] },
+  },
+};
