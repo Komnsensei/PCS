@@ -124,4 +124,43 @@ export default function Square() {
                 style={{
                   background: domainFilter === "all" ? "rgba(124,106,240,0.15)" : "transparent",
                   color: domainFilter === "all" ? "#a594f9" : "var(--text-muted)",
- 
+                  borderColor: domainFilter === "all" ? "rgba(124,106,240,0.4)" : "var(--border-dim)",
+                }}>
+                all domains
+              </button>
+              {DOMAINS.slice(0, 5).map(d => (
+                <button key={d} onClick={() => setDomainFilter(d)}
+                  className="px-2 py-1 rounded-full text-xs border transition-all"
+                  style={{
+                    background: domainFilter === d ? "rgba(124,106,240,0.15)" : "transparent",
+                    color: domainFilter === d ? "#a594f9" : "var(--text-muted)",
+                    borderColor: domainFilter === d ? "rgba(124,106,240,0.4)" : "var(--border-dim)",
+                  }}>
+                  {d}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {view === "list" && loading ? (
+          <div className="space-y-4">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="card-void p-5 animate-pulse h-32" />
+            ))}
+          </div>
+        ) : view === "list" && filtered.length === 0 ? (
+          <div className="text-center py-20">
+            <p className="font-display text-2xl text-[var(--text-muted)] mb-2">The square is quiet.</p>
+            <p className="text-sm text-[var(--text-muted)]">Be the first to open a thread.</p>
+          </div>
+        ) : view === "list" ? (
+          <div className="space-y-4">
+            {filtered.map(t => (
+              <ThreadCard key={t.id} thread={t} replyCount={replyCounts[t.id] || 0} onReaction={load} />
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
